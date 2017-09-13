@@ -1,14 +1,17 @@
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
+  puts "First enter your name, then your hobbies, then your country of birth, and finally your height"
 
   students = []
-  name = gets.chomp
+  name, hobbies, country_of_birth, height = gets.chomp, gets.chomp, gets.chomp, gets.chomp
 
   while !name.empty? do
-    students << {name: name, cohort: :november}
+    students << {name: name, hobbies: hobbies, country_of_birth: country_of_birth, height: height, cohort: :november}
     puts "Now we have #{students.count} students"
     name = gets.chomp
+    break if name.empty?
+    hobbies, country_of_birth, height = gets.chomp, gets.chomp, gets.chomp
   end
   students
 end
@@ -19,11 +22,8 @@ def print_header
 end
 
 def print(students)
-  i = 0
-  while i < students.length
-    current_student = students[i]
-    puts "#{current_student[:name]} (#{current_student[:cohort]} cohort)"
-    i += 1
+  students.each do |student|
+    puts "#{student[:name]}, hobbies are #{student[:hobbies]}, country of birth is #{student[:country_of_birth]}, height is #{student[:height]} (#{student[:cohort]} cohort)"
   end
 end
 
