@@ -23,7 +23,7 @@ end
 
 def print(students)
   students.each do |student|
-    puts "#{student[:name]}, hobbies are #{student[:hobbies]}, country of birth is #{student[:country_of_birth]}, height is #{student[:height]} (#{student[:cohort]} cohort)"
+    puts "#{student[:name]}, hobbies are #{student[:hobbies]}, country of birth is #{student[:country_of_birth]}, height is #{student[:height]} (#{student[:cohort]} cohort)".center(80)
   end
 end
 
