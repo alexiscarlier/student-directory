@@ -1,17 +1,19 @@
 def input_students
-  puts "Please enter the names of the students"
+  puts "Please enter the names of the students and their cohorts"
   puts "To finish, just hit return twice"
-  puts "First enter your name, then your hobbies, then your country of birth, and finally your height"
 
   students = []
-  name, hobbies, country_of_birth, height = gets.chomp, gets.chomp, gets.chomp, gets.chomp
+  name = gets.chomp
+  cohort = gets.chomp
+  possible_cohorts = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   while !name.empty? do
-    students << {name: name, hobbies: hobbies, country_of_birth: country_of_birth, height: height, cohort: :november}
+    cohort = "No cohort" unless possible_cohorts.include?(cohort)
+    students << { name: name.to_sym, cohort: cohort.to_sym }
     puts "Now we have #{students.count} students"
     name = gets.chomp
     break if name.empty?
-    hobbies, country_of_birth, height = gets.chomp, gets.chomp, gets.chomp
+    cohort = gets.chomp
   end
   students
 end
@@ -23,7 +25,7 @@ end
 
 def print(students)
   students.each do |student|
-    puts "#{student[:name]}, hobbies are #{student[:hobbies]}, country of birth is #{student[:country_of_birth]}, height is #{student[:height]} (#{student[:cohort]} cohort)".center(80)
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
