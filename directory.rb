@@ -10,7 +10,8 @@ def input_students
   while !name.empty? do
     cohort = "No cohort" unless possible_cohorts.include?(cohort)
     students << { name: name.to_sym, cohort: cohort.to_sym }
-    puts "Now we have #{students.count} students"
+    puts "Now we have 1 student" if students.count == 1
+    puts "Now we have #{students.count} students" if students.count != 1 
     name = gets.chomp
     break if name.empty?
     cohort = gets.chomp
